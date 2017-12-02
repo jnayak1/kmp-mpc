@@ -10,6 +10,6 @@ sudo apt-get install ocaml libgcrypt20-dev ocaml-findlib
 ./configure && make
 
 cd ../sqrtOram
-export OBLIVC_PATH=~/obliv-c
-export SQR_ORAM_PATH=~/sqrtOram
+export OBLIVC_PATH=/home/ubuntu/obliv-c
+export SQR_ORAM_PATH=/home/ubuntu/sqrtOram
 make
