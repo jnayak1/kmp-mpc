@@ -1,0 +1,95 @@
+#include <obliv.oh>
+#include <stdio.h>
+
+#include <oram.oh>
+#include <linearoram.oh>
+#include <sqrtoram.oh>
+#include <circuit_oram.oh>
+
+#include "kmp.h"
+
+obliv bool search(obliv char *txt, obliv int txtLen, obliv int *dfa, obliv int patLen){
+	/*
+	 * Knuth Morris Pratt algorithm for searching string using dfa
+	 *
+	 * Return:
+	 * bool - found pattern in text
+	 *
+	 */
+	obliv int index;
+	obliv int found = 0;
+	obliv char state = 0;
+	int dfa_len;
+
+	dfa_len = CHAR_SET_LENGTH * MAX_PATTERN_LENGTH;
+
+	const int block = 1;
+	OcCopy cpy = ocCopyIntN(block);
+	OcOram *ram = (OcOram*)ocSqrtOramNew(&cpy,dfa,dfa_len);
+
+	for (int i = 0; i < MAX_TEXT_LENGTH; ++i)
+	{
+		// translate double array indices to single array index
+		index = (txt[i] * MAX_PATTERN_LENGTH) + state;
+		ocOramRead(&state, ram, index);
+		obliv if(state == patLen) found = 1;
+	}
+
+	return found;
+}
+
+void kmp(void*args) {
+	/*
+	 * Reveals to party 2 (pattern) whether the string is 
+	 * located in the text
+	 */
+	protocolIO *io;
+	obliv char txt[MAX_TEXT_LENGTH];
+	obliv int *dfa;
+	obliv int txtLenObliv, patLenObliv;
+	obliv bool match;
+	int txtLen, patLen;
+	int index;
+	bool ret;
+
+	// allocate dfa
+	dfa = (obliv int*) calloc(CHAR_SET_LENGTH * MAX_PATTERN_LENGTH, 
+							  sizeof(obliv int));
+
+	io = args;
+
+	// read in txt as obliv
+	feedOblivCharArray(txt,io->txt,MAX_TEXT_LENGTH,1);
+
+	
+	// read in dfa as obliv 1d array
+	for (int r = 0; r < CHAR_SET_LENGTH; ++r)
+	{
+		for (int c = 0; c < MAX_PATTERN_LENGTH; ++c)
+		{
+			// translate double array indices to single array index
+			index = r * MAX_PATTERN_LENGTH + c;
+			dfa[index] = feedOblivInt(io->dfa[r][c], 2);
+		}
+	}
+
+	if (ocCurrentParty()==1) 
+		txtLen = strlen(io->txt);
+	else 
+		patLen = strlen(io->pat); 
+
+	// read in text and pattern lengths as obliv
+	txtLenObliv = feedOblivInt(txtLen, 1);
+	patLenObliv = feedOblivInt(patLen, 2);
+
+	// search for a pattern in text
+	match = search(txt, txtLenObliv, dfa, patLenObliv);
+
+	free(dfa);
+
+	// reveal index of start of first instance of pattern or -1
+	revealOblivBool(&ret, match, 2);
+	if(ocCurrentParty() == 2) 
+		printf("%s%d\n", "Match: ", ret);
+	fprintf(stderr,"Yao gate count: %u\n",yaoGateCount());
+}
