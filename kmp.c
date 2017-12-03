@@ -8,10 +8,6 @@
 double lap;
 
 
-#define MAX_PATTERN_LENGTH 16
-#define MAX_TEXT_LENGTH 128
-
-
 void buildDFA(protocolIO *io, char *pat){
     int x, m, j, patj, pat0;
     m = strlen(pat);

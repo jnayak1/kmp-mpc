@@ -1,5 +1,8 @@
+#!/usr/bin/sh
+
 sudo apt-get update
 sudo apt-get install git
+sudo apt-get install make
 
 cd ~
 git clone https://github.com/samee/sqrtOram.git
