@@ -1,0 +1,18 @@
+[  4] local 172.31.9.102 port 54348 connected to 172.31.2.26 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  4]   0.00-1.00   sec   418 MBytes  3.50 Gbits/sec   38   2.59 MBytes       
+[  4]   1.00-2.00   sec   295 MBytes  2.47 Gbits/sec    3   2.36 MBytes       
+[  4]   2.00-3.00   sec   296 MBytes  2.49 Gbits/sec    1   2.13 MBytes       
+[  4]   3.00-4.00   sec   295 MBytes  2.47 Gbits/sec    0   2.69 MBytes       
+[  4]   4.00-5.00   sec   296 MBytes  2.49 Gbits/sec    2   2.48 MBytes       
+[  4]   5.00-6.00   sec   296 MBytes  2.48 Gbits/sec    1   2.25 MBytes       
+[  4]   6.00-7.00   sec   295 MBytes  2.47 Gbits/sec    1   2.01 MBytes       
+[  4]   7.00-8.00   sec   296 MBytes  2.49 Gbits/sec    0   2.59 MBytes       
+[  4]   8.00-9.00   sec   295 MBytes  2.47 Gbits/sec    1   2.37 MBytes       
+[  4]   9.00-10.00  sec   296 MBytes  2.49 Gbits/sec    2   2.13 MBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  4]   0.00-10.00  sec  3.01 GBytes  2.58 Gbits/sec   49             sender
+[  4]   0.00-10.00  sec  3.01 GBytes  2.58 Gbits/sec                  receiver
+
+iperf Done.
