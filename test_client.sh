@@ -1,66 +1,37 @@
-#!/usr/bin/sh
+#!/bin/bash
 
 
 sleep_time=1
 host="localhost"
 
-touch results.txt
+rm text_length.csv
+touch text_length.csv
+
+echo "match, pattern length, text length, yao gate count, time" >> text_length.csv
 
 # small pattern increase text size
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=8 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=16 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=32 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=64 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=128 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=512 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=1024 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=2048 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=4096 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=8192 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
+tlen=8
+for i in `seq 1 11`;
+    do
+        MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=$tlen make
+        ./a.out 2345 $host text.txt >> text_length.csv
+        tlen=$tlen*2
+        sleep $sleep_time
+    done
 
-# small text, increase patter size
-MAX_PATTERN_LENGTH=1 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern1.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern4.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=5 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern5.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=8 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern8.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=16 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern16.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=64 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern64.txt >> results.txt 2>&1
-sleep $sleep_time
-MAX_PATTERN_LENGTH=128 MAX_TEXT_LENGTH=256 make
-./a.out 2345 $host test_patterns/pattern128.txt >> results.txt 2>&1
 
+rm pattern_length.csv
+touch pattern_length.csv
+
+echo "match, pattern length, text length, yao gate count, time" >> pattern_length.csv
+
+# large text, increase pattern size
+plen=1
+for i in `seq 1 8`;
+    do
+        MAX_PATTERN_LENGTH=$plen MAX_TEXT_LENGTH=8192 make
+        ./a.out 2345 $host text.txt >> pattern_length.csv
+        plen=$plen*2
+        sleep $sleep_time
+    done
 

@@ -1,4 +1,6 @@
-#!/usr/bin/sh
+#!/bin/bash
+
+# Setup for ubuntu
 
 sudo apt-get update
 sudo apt-get install git

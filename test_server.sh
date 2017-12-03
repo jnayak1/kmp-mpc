@@ -1,42 +1,22 @@
-#!/usr/bin/sh
+#!/bin/bash
 
+
+echo "match, pattern length, text length, yao gate count, time"
 # small pattern, increase text size
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=8 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=16 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=32 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=64 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=128 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=512 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=1024 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=2048 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=4096 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=8192 make
-./a.out 2345 -- text.txt
+tlen=8
+for i in `seq 1 11`;
+    do
+        MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=$tlen make
+        ./a.out 2345 -- text.txt
+        tlen=$tlen*2
+    done
 
-
-# small text, increase pattern size
-MAX_PATTERN_LENGTH=1 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=5 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=8 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=16 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=64 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
-MAX_PATTERN_LENGTH=128 MAX_TEXT_LENGTH=256 make
-./a.out 2345 -- text.txt
+echo "match, pattern length, text length, yao gate count, time"
+# large text, increase pattern size
+plen=1
+for i in `seq 1 8`;
+    do
+        MAX_PATTERN_LENGTH=$plen MAX_TEXT_LENGTH=8192 make
+        ./a.out 2345 -- text.txt
+        plen=$plen*2
+    done

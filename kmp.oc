@@ -90,6 +90,8 @@ void kmp(void*args) {
 	// reveal index of start of first instance of pattern or -1
 	revealOblivBool(&ret, match, 2);
 	if(ocCurrentParty() == 2) 
-		printf("%s%d\n", "Match: ", ret);
-	fprintf(stderr,"Yao gate count: %u\n",yaoGateCount());
+		fprintf(stdout,"%d,", ret);
+	fprintf(stdout, "%d,", MAX_PATTERN_LENGTH);
+	fprintf(stdout, "%d,", MAX_TEXT_LENGTH);
+	fprintf(stdout,"%u,",yaoGateCount());
 }

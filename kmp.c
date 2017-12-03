@@ -108,7 +108,7 @@ int main(int argc,char* argv[])
     setCurrentParty(&pd,party);
     lap = wallClock();
     execYaoProtocol(&pd,kmp,&io);
-    fprintf(stderr,"Total time: %lf s\n",wallClock()-lap);
+    fprintf(stdout,"%lf\n",wallClock()-lap);
     cleanupProtocol(&pd);
 
     return 0;
