@@ -9,8 +9,8 @@ double lap;
 
 
 void buildDFA(protocolIO *io, char *pat){
-    int x, m, j, patj, pat0;
-    m = strlen(pat);
+    int x, patLen, j, patj, pat0;
+    patLen = strlen(pat);
 
     // zero out entire array
     for (int r=0; r < CHAR_SET_LENGTH; ++r)
@@ -23,7 +23,7 @@ void buildDFA(protocolIO *io, char *pat){
 
     pat0 = pat[0];
     io->dfa[pat0][0] = 1; 
-    for (; j < m; ++j)
+    for (; j < patLen; ++j)
     {
         for (int c = 0; c < CHAR_SET_LENGTH; ++c)
             io->dfa[c][j] = io->dfa[c][x];
