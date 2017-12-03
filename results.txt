@@ -1,0 +1,54 @@
+Yao gate count: 153501
+Total time: 0.355752 s
+Match: 1
+Yao gate count: 221533
+Total time: 0.370298 s
+Match: 1
+Yao gate count: 369885
+Total time: 0.411709 s
+Match: 1
+Yao gate count: 715741
+Total time: 0.503407 s
+Match: 1
+Yao gate count: 1442328
+Total time: 0.726688 s
+Match: 1
+Yao gate count: 2895694
+Total time: 1.184157 s
+Match: 1
+Yao gate count: 5803194
+Total time: 2.114736 s
+Match: 1
+Yao gate count: 11621266
+Total time: 3.895362 s
+Match: 1
+Yao gate count: 23269698
+Total time: 7.522125 s
+Match: 1
+Yao gate count: 46615714
+Total time: 14.794797 s
+Match: 1
+Yao gate count: 93141927
+Total time: 29.767210 s
+Match: 1
+Yao gate count: 837658
+Total time: 0.572820 s
+Match: 1
+Yao gate count: 2895694
+Total time: 1.203447 s
+Match: 1
+Yao gate count: 2386728
+Total time: 1.162166 s
+Match: 1
+Yao gate count: 3140081
+Total time: 1.458988 s
+Match: 1
+Yao gate count: 5104734
+Total time: 2.169476 s
+Match: 1
+Yao gate count: 13749808
+Total time: 5.770640 s
+Match: 1
+Yao gate count: 22819887
+Total time: 10.442018 s
+Match: 0
