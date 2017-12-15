@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Setup for ubuntu
+# execute with source:
+# . setup.sh
 
 sudo apt-get update
 sudo apt-get install git
