@@ -1,13 +1,13 @@
 # kmp-mpc
-Oblivious substring search using Obliv-C, sqrOram and Knuth-Morris-Pratt.
+Oblivious substring search using Obliv-C, sqrtOram and Knuth-Morris-Pratt.
 
 ## Introduction
 One party wants to be able to determine whether its substring is in another party's text. However, both parties want to keep their input private. This multi-party computation (MPC) problem, known as oblivious substring search, can be found across several different fields. In bioinformatics, for example, people might want to allow a company to search their DNA for a particular proprietary pattern, while maintaining privacy.
 
-kmp-mpc uses [Obliv-C](https://github.com/samee/obliv-c) as a MPC framework. It creates a new variation of the substring search algorithm Knuth-Morris-Pratt to accomodate for Obliv-C's restrictions on oblivious conditional statements and indexing into arrays. To keep memory access patterns hidden, all oblivious indexing into arrays use ORAM. Rather than use the naive solution of reading at each index to hide memory access patterns, this implementation utilizes [sqrOram](https://github.com/samee/sqrtOram) reducing the time complexity of oblivious lookups from linear to square-root order.
+kmp-mpc uses [Obliv-C](https://github.com/samee/obliv-c) as a MPC framework. It creates a new variation of the substring search algorithm Knuth-Morris-Pratt to accomodate for Obliv-C's restrictions on oblivious conditional statements and indexing into arrays. To keep memory access patterns hidden, all oblivious indexing into arrays use ORAM. Rather than use the naive solution of reading at each index to hide memory access patterns, this implementation uses [sqrtOram](https://github.com/samee/sqrtOram) reducing the time complexity of oblivious lookups from linear to square-root order.
 
 ## Test Results
-Tests were conducted on two aws c4.2xlarge nodes. The tests found a linear relationship between text size and run time and a square-root relationship between pattern size and run time.
+Tests were conducted on two AWS c4.2xlarge nodes. The tests found a linear relationship between text size and run time and a square-root relationship between pattern size and run time.
 
 |pattern length|text length|yao gate count| time (s) |
 | ------------ | --------- | ------------ | -------- | 
