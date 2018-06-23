@@ -19,6 +19,7 @@ Tests were conducted on two AWS c4.2xlarge nodes. The tests found a linear relat
 |32            |8192       |281146357     |86.611352 |
 |64            |8192       |474221756     |142.644258|
 
+<img width="533" alt="screen shot 2018-06-22 at 10 09 39 pm" src="https://user-images.githubusercontent.com/11620890/41804695-09bdf66e-7669-11e8-9903-f9aa4488825e.png">
 
 | text length | yao gate count| time (s)   |
 | ----------- | ------------- | ---------- |
@@ -37,6 +38,7 @@ Tests were conducted on two AWS c4.2xlarge nodes. The tests found a linear relat
 |  32768       |372300549      |120.202773 |
 |  65536       |744515629      |231.481555 |
 
+<img width="546" alt="screen shot 2018-06-22 at 10 09 24 pm" src="https://user-images.githubusercontent.com/11620890/41804706-4cd4295a-7669-11e8-900c-af347335d08a.png">
 
 ## Installation
 - Clone and install [Obliv-C](https://github.com/samee/obliv-c#installation)
