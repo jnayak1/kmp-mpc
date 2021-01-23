@@ -1,6 +1,10 @@
 # kmp-mpc
 Oblivious substring search using Obliv-C, sqrtOram and Knuth-Morris-Pratt.
 
+NOTE: The sqrtOram dependency is not working. Anyone who is familiar with
+the sqrtOram library and can fix this is welcome to make a PR.
+
+
 ## Introduction
 One party wants to be able to determine whether its substring is in another party's text. However, both parties want to keep their input private. This multi-party computation (MPC) problem, known as oblivious substring search, can be found across several different fields. In bioinformatics, for example, people might want to allow a company to search their DNA for a particular proprietary pattern, while maintaining privacy.
 
@@ -50,6 +54,14 @@ Tests were conducted on two AWS c4.2xlarge nodes. The tests found a linear relat
 
 `export SQR_ORAM_PATH=/path/to//sqrtOram`
 
+## Docker
+
+`docker build . -t kmp-mpc:latest`
+
+`docker run -it kmp-mpc`
+
+`cd kmp-mpc`
+
 ## Running
 `MAX_PATTERN_LENGTH=4 MAX_TEXT_LENGTH=256 make`
 
@@ -58,9 +70,6 @@ Tests were conducted on two AWS c4.2xlarge nodes. The tests found a linear relat
 `./a.out [port] [host] pattern.txt` -- client
 
 
-
-
- 
 
 
 
